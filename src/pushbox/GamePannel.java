@@ -18,7 +18,10 @@ import javax.swing.border.LineBorder;
 public class GamePannel extends javax.swing.JPanel {
 
     int board[][] = new int[13][15];//board for values
-    int memoryBoard[][] = new int[13][15];//board for last move 
+    int[][] memoryBoard1 = new int[13][15];//board for last move
+    int[][] memoryBoard2 = new int[13][15];//board for last second move
+    int[][] memoryBoard3 = new int[13][15];//board for last third move
+    
     int playerX,playerY;
     int box1x,box1y,box2x,box2y,box3x,box3y;
     int win=0,levelwin,moves=0,totalmoves=0,level,maxlevel=3;
@@ -174,6 +177,8 @@ public class GamePannel extends javax.swing.JPanel {
         playerX=12;playerY=9;
         
         lastMove();
+        lastMove();
+        lastMove();
         updateBox();//calls update box
     } //initializes board1 
     
@@ -202,6 +207,8 @@ public class GamePannel extends javax.swing.JPanel {
         playerX=12;playerY=9;
         
         lastMove();
+        lastMove();
+        lastMove();
         updateBox();//calls update box
     } //initializes board2 
     
@@ -228,6 +235,9 @@ public class GamePannel extends javax.swing.JPanel {
         playerX=9;playerY=8;
         
         lastMove();
+        lastMove();
+        lastMove();
+        
         updateBox();//calls update box
     } //initializes board3 
     
@@ -342,7 +352,11 @@ public class GamePannel extends javax.swing.JPanel {
     
     public void lastMove(){
         for(int i=0;i<12;i++)
-            System.arraycopy(board[i], 0, memoryBoard[i], 0, 15);
+            System.arraycopy(memoryBoard2[i], 0, memoryBoard3[i], 0, 15);
+        for(int i=0;i<12;i++)
+            System.arraycopy(memoryBoard1[i], 0, memoryBoard2[i], 0, 15);
+        for(int i=0;i<12;i++)
+            System.arraycopy(board[i], 0, memoryBoard1[i], 0, 15);
                 
     }//copy array into memoryBoard
     
@@ -496,18 +510,21 @@ public class GamePannel extends javax.swing.JPanel {
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void undoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_undoButtonActionPerformed
-        for(int i=0;i<12;i++){
-            System.arraycopy(memoryBoard[i], 0, board[i], 0, 15);
-            updateBox();
+        for(int i=0;i<12;i++)
+            System.arraycopy(memoryBoard1[i], 0, board[i], 0, 15);
+        for(int i=0;i<12;i++)
+            System.arraycopy(memoryBoard2[i], 0, memoryBoard1[i], 0, 15);
+        for(int i=0;i<12;i++)
+            System.arraycopy(memoryBoard3[i], 0, memoryBoard2[i], 0, 15);
+        updateBox();
             controlPannel.grabFocus();//get focus back to control pannel
-        }
     }//GEN-LAST:event_undoButtonActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         JOptionPane.showMessageDialog(controlPannel,"* use W A S D keys to move player\n"
                                             +"* Red dots are your target point\n"
                                             +"* Yellow boxes are to be placed on target points (Red Dot)\n"
-                                            +"* you can undo only the last move\n"
+                                            +"* you can undo only the last 3 moves\n"
                                             +"* There are total 3 levels\n"
                                             +"* Each level carries 10 points\n"
                                             ,"Instructions"
