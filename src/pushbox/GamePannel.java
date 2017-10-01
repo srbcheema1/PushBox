@@ -50,8 +50,14 @@ public class GamePannel extends javax.swing.JPanel {
         controlPannel.setOpaque(false);//to make buttons transparent
         controlPannel.setFocusTraversalKeysEnabled(false);
         controlPannel.addKeyListener(new KeyAdapter(){
-            public void keyTyped(KeyEvent e){
+        	/*@Override
+        	public void keyTyped(KeyEvent e){
                 keyInput(e);
+            }*/
+        	// Arrow keys are not called in keytyped, using keypressed instead
+        	@Override
+            public void keyPressed(KeyEvent e){
+            	keyInput(e);
             }
         });//calls keyInput()
         
@@ -367,9 +373,53 @@ public class GamePannel extends javax.swing.JPanel {
         totalmovesLabel.setText("Total moves : "+Integer.toString(totalmoves));
     }//updates moves
     
+    
+    
+    // movement using either WASD or arrow keys
     public void keyInput(KeyEvent e){
-        char input=e.getKeyChar();
-        if(input=='w' || input=='W'){
+    	System.out.println(e.getKeyCode());
+    	int input = e.getKeyCode();
+        switch(input){
+        
+        // A or left arrow
+        case 65:
+        case 37:
+        	box1x=playerX;box1y=playerY;
+            box2x=playerX-1;box2y=playerY;
+            box3x=playerX-2;box3y=playerY;
+            updateBoard();
+            break;
+            
+        // W or up arrow    
+        case 87:
+        case 38:
+        	box1x=playerX;box1y=playerY;
+            box2x=playerX;box2y=playerY-1;
+            box3x=playerX;box3y=playerY-2;
+            updateBoard();
+            break;
+            
+        //S or down arrow
+        case 83:
+        case 40:
+        	box1x=playerX;box1y=playerY;
+            box2x=playerX;box2y=playerY+1;
+            box3x=playerX;box3y=playerY+2;
+            updateBoard();
+        	break;
+        
+        // D or right arrow
+        case 68:
+        case 39:
+        	box1x=playerX;box1y=playerY;
+            box2x=playerX+1;box2y=playerY;
+            box3x=playerX+2;box3y=playerY;
+            updateBoard();
+            break;
+            
+        
+        }
+        /*if(input=='w' || input=='W'){
             box1x=playerX;box1y=playerY;
             box2x=playerX;box2y=playerY-1;
             box3x=playerX;box3y=playerY-2;
@@ -392,7 +442,7 @@ public class GamePannel extends javax.swing.JPanel {
             box2x=playerX+1;box2y=playerY;
             box3x=playerX+2;box3y=playerY;
             updateBoard();
-        }
+        }*/
     }//calls updateBoard if key recognised
 
     @SuppressWarnings("unchecked")
