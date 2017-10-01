@@ -50,6 +50,7 @@ public class GamePannel extends javax.swing.JPanel {
         controlPannel.setOpaque(false);//to make buttons transparent
         controlPannel.setFocusTraversalKeysEnabled(false);
         controlPannel.addKeyListener(new KeyAdapter(){
+            @Override
             public void keyPressed(KeyEvent e) {
                 keyInput(e);
             }
@@ -368,28 +369,29 @@ public class GamePannel extends javax.swing.JPanel {
     }//updates moves
     
     public void keyInput(KeyEvent e){
-        char input=e.getKeyChar();
-        int code=e.getKeyCode();
+        int input=e.getKeyCode();
 
-        if(input=='w' || input=='W' || code==KeyEvent.VK_UP){
+        System.out.println(input);
+
+        if(input==KeyEvent.VK_W || input==KeyEvent.VK_UP){
             box1x=playerX;box1y=playerY;
             box2x=playerX;box2y=playerY-1;
             box3x=playerX;box3y=playerY-2;
             updateBoard();
         }
-        if(input=='s' || input=='S' || code==KeyEvent.VK_DOWN){
+        if(input==KeyEvent.VK_S || input==KeyEvent.VK_DOWN){
             box1x=playerX;box1y=playerY;
             box2x=playerX;box2y=playerY+1;
             box3x=playerX;box3y=playerY+2;
             updateBoard();
         }
-        if(input=='a' || input=='A' || code==KeyEvent.VK_LEFT){
+        if(input==KeyEvent.VK_A || input==KeyEvent.VK_LEFT){
             box1x=playerX;box1y=playerY;
             box2x=playerX-1;box2y=playerY;
             box3x=playerX-2;box3y=playerY;
             updateBoard();
         }
-        if(input=='d' || input=='D' || code==KeyEvent.VK_RIGHT){
+        if(input==KeyEvent.VK_D || input==KeyEvent.VK_RIGHT){
             box1x=playerX;box1y=playerY;
             box2x=playerX+1;box2y=playerY;
             box3x=playerX+2;box3y=playerY;
