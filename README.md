@@ -1,9 +1,13 @@
 # PushBox
 
-## Introduction
+A simple game built with the Java Swing library.
 
-> "Proudly" made using the Netbeans IDE, PushBox is a Java based game built using the Java Swing library
+![Screenshot](https://i.imgur.com/xB5Gv6V.png)
 
-## Execution
+## Running the game
 
-> As of now, to obtain a .jar archive, you must compile the game yourself using javac or an IDE of your choice. From there, you are able to execute the archive using the JRE of your choice (Oracle, OpenJDK etc.)  with the command `java -jar PushBox.jar`
+To play the game, it has to be built from the source.
+
+1. Install a JDK if you don't have one
+2. Compile to a `.jar` (either witn `javac` or using an IDE)
+3. Launch the `jar` file (`java -jar jar_file.jar`)
