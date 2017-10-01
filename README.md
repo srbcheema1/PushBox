@@ -6,4 +6,4 @@
 
 ## Execution
 
-> To obtain a .jar archive, you can use the Github release or compile the game yourself using javac or an IDE of your choice. From there, you are able to execute the archive using the JRE of your choice (Oracle, OpenJDK etc.)  with the command `java -jar PushBox.jar`
+> As of now, to obtain a .jar archive, you must compile the game yourself using javac or an IDE of your choice. From there, you are able to execute the archive using the JRE of your choice (Oracle, OpenJDK etc.)  with the command `java -jar PushBox.jar`
