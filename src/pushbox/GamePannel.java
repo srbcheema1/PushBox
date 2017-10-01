@@ -369,25 +369,27 @@ public class GamePannel extends javax.swing.JPanel {
     
     public void keyInput(KeyEvent e){
         char input=e.getKeyChar();
-        if(input=='w' || input=='W'){
+        int code=e.getKeyCode();
+
+        if(input=='w' || input=='W' || code==KeyEvent.VK_UP){
             box1x=playerX;box1y=playerY;
             box2x=playerX;box2y=playerY-1;
             box3x=playerX;box3y=playerY-2;
             updateBoard();
         }
-        if(input=='s' || input=='S'){
+        if(input=='s' || input=='S' || code==KeyEvent.VK_DOWN){
             box1x=playerX;box1y=playerY;
             box2x=playerX;box2y=playerY+1;
             box3x=playerX;box3y=playerY+2;
             updateBoard();
         }
-        if(input=='a' || input=='A'){
+        if(input=='a' || input=='A' || code==KeyEvent.VK_LEFT){
             box1x=playerX;box1y=playerY;
             box2x=playerX-1;box2y=playerY;
             box3x=playerX-2;box3y=playerY;
             updateBoard();
         }
-        if(input=='d' || input=='D'){
+        if(input=='d' || input=='D' || code==KeyEvent.VK_RIGHT){
             box1x=playerX;box1y=playerY;
             box2x=playerX+1;box2y=playerY;
             box3x=playerX+2;box3y=playerY;
