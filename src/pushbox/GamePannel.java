@@ -369,32 +369,42 @@ public class GamePannel extends javax.swing.JPanel {
     }//updates moves
     
     public void keyInput(KeyEvent e){
-        int input=e.getKeyCode();
+        int input = e.getKeyCode();
 
-        System.out.println(input);
-
-        if(input==KeyEvent.VK_W || input==KeyEvent.VK_UP){
-            box1x=playerX;box1y=playerY;
-            box2x=playerX;box2y=playerY-1;
-            box3x=playerX;box3y=playerY-2;
+        if(input == KeyEvent.VK_W || input == KeyEvent.VK_UP){
+            box1x = playerX;
+            box1y = playerY;
+            box2x = playerX;
+            box2y = playerY - 1;
+            box3x = playerX;
+            box3y = playerY - 2;
             updateBoard();
         }
-        if(input==KeyEvent.VK_S || input==KeyEvent.VK_DOWN){
-            box1x=playerX;box1y=playerY;
-            box2x=playerX;box2y=playerY+1;
-            box3x=playerX;box3y=playerY+2;
+        if(input == KeyEvent.VK_S || input == KeyEvent.VK_DOWN){
+            box1x = playerX;
+            box1y = playerY;
+            box2x = playerX;
+            box2y = playerY + 1;
+            box3x = playerX;
+            box3y = playerY + 2;
             updateBoard();
         }
-        if(input==KeyEvent.VK_A || input==KeyEvent.VK_LEFT){
-            box1x=playerX;box1y=playerY;
-            box2x=playerX-1;box2y=playerY;
-            box3x=playerX-2;box3y=playerY;
+        if(input == KeyEvent.VK_A || input == KeyEvent.VK_LEFT){
+            box1x = playerX;
+            box1y = playerY;
+            box2x = playerX - 1;
+            box2y = playerY;
+            box3x = playerX - 2;
+            box3y = playerY;
             updateBoard();
         }
-        if(input==KeyEvent.VK_D || input==KeyEvent.VK_RIGHT){
-            box1x=playerX;box1y=playerY;
-            box2x=playerX+1;box2y=playerY;
-            box3x=playerX+2;box3y=playerY;
+        if(input == KeyEvent.VK_D || input == KeyEvent.VK_RIGHT){
+            box1x = playerX;
+            box1y = playerY;
+            box2x = playerX + 1;
+            box2y = playerY;
+            box3x = playerX + 2;
+            box3y = playerY;
             updateBoard();
         }
     }//calls updateBoard if key recognised
