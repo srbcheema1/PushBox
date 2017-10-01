@@ -50,7 +50,7 @@ public class GamePannel extends javax.swing.JPanel {
         controlPannel.setOpaque(false);//to make buttons transparent
         controlPannel.setFocusTraversalKeysEnabled(false);
         controlPannel.addKeyListener(new KeyAdapter(){
-            public void keyTyped(KeyEvent e){
+            public void keyPressed(KeyEvent e) {
                 keyInput(e);
             }
         });//calls keyInput()
