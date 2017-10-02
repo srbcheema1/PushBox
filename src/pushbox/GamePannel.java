@@ -99,53 +99,46 @@ public class GamePannel extends javax.swing.JPanel {
         controlPannel.add(stage);
     } //creates boxes 
     
+    private void fillBoxContents(int boxI, int boxJ, javax.swing.ImageIcon icon, Border borderColor, boolean focusPainted, boolean contentAreaFilled){
+        box[boxI][boxJ].setIcon(icon);
+        box[boxI][boxJ].setBorder(borderColor);
+        box[boxI][boxJ].setFocusPainted(focusPainted);
+        box[boxI][boxJ].setContentAreaFilled(contentAreaFilled ); // false = transparent, true = visible
+    }
+    
     public void updateBox(){
         for(int i=1;i<12;i++)
             for(int j=1;j<14;j++){
-                if(board[i][j]==0){
-                    box[i][j].setIcon(null);
-                    box[i][j].setBorder(nullborder);
-                    box[i][j].setFocusPainted( false );
-                    box[i][j].setContentAreaFilled(false );//to make buttons transparent
+                switch(board[i][j])
+                {
+                    case 0:
+                        fillBoxContents(i,j,null,nullborder,false,false);
                //     box[i][j].setOpaque(false);
-                }
-                if(board[i][j]==1){
-                    box[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bricks1.jpeg")));
-                    box[i][j].setBorder(nullborder);
-                    box[i][j].setFocusPainted( true );
-                    box[i][j].setContentAreaFilled(true );//to make buttons visible
-                }
-                if(board[i][j]==2){
-                    box[i][j].setIcon(null);
-                    box[i][j].setBorder(lightborder);
-                    box[i][j].setBackground(Color.white);
-                    box[i][j].setFocusPainted( true );
-                    box[i][j].setContentAreaFilled(true );//to make buttons visible
-                }
-                if(board[i][j]==3 || board[i][j]==7){
-                    box[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/boy2.png")));
-                    box[i][j].setBorder(lightborder);
-                    box[i][j].setFocusPainted( true );
-                    box[i][j].setContentAreaFilled(true );//to make buttons visible
-                    playerX=j;playerY=i;
-                }
-                if(board[i][j]==4){
-                    box[i][j].setBorder(lightborder);
-                    box[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/red_dot.jpg")));
-                    box[i][j].setFocusPainted( true );
-                    box[i][j].setContentAreaFilled(true );//to make buttons visible
-                }
-                if(board[i][j]==5){
-                    box[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/box4.png")));
-                    box[i][j].setBorder(darkborder);
-                    box[i][j].setFocusPainted( true );
-                    box[i][j].setContentAreaFilled(true );//to make buttons visible
-                }
-                if(board[i][j]==6){
-                    box[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/box5.png")));
-                    box[i][j].setBorder(darkborder);
-                    box[i][j].setFocusPainted( true );
-                    box[i][j].setContentAreaFilled(true );//to make buttons visible
+                        break;
+                    case 1:
+                        fillBoxContents(i,j,new javax.swing.ImageIcon(getClass().getResource("/images/bricks1.jpeg")),nullborder,true,true);
+                        break;
+                    case 2:
+                        fillBoxContents(i,j,null,lightborder,false,true);
+                    box[i][j].setBackground(Color.white); // Should incorporate this into new function
+                        break;
+                    case 3:
+                    case 7:
+                        fillBoxContents(i,j,new javax.swing.ImageIcon(getClass().getResource("/images/boy2.png")),lightborder,true,true);
+                        playerX=j;playerY=i;
+                        break;
+                    case 4:
+                        fillBoxContents(i,j,new javax.swing.ImageIcon(getClass().getResource("/images/red_dot.jpg")),lightborder,true,true);
+                        break;
+                    case 5:
+                        fillBoxContents(i,j,new javax.swing.ImageIcon(getClass().getResource("/images/box4.png")),darkborder,true,true);
+                        break;
+                    case 6:
+                        fillBoxContents(i,j,new javax.swing.ImageIcon(getClass().getResource("/images/box5.png")),darkborder,true,true);
+                        break;
+                    default:
+                        fillBoxContents(i,j,null,nullborder,false,false);
+                        break;
                 }
             }
     } //update box display
@@ -535,11 +528,11 @@ public class GamePannel extends javax.swing.JPanel {
     }//GEN-LAST:event_undoButtonActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        JOptionPane.showMessageDialog(controlPannel,"* use W A S D keys to move player\n"
+        JOptionPane.showMessageDialog(controlPannel,"* Use W A S D keys to move player\n"
                                             +"* Red dots are your target point\n"
                                             +"* Yellow boxes are to be placed on target points (Red Dot)\n"
-                                            +"* you can undo only the last 3 moves\n"
-                                            +"* There are total 3 levels\n"
+                                            +"* You can undo only the last 3 moves\n"
+                                            +"* There are a total of 3 levels\n"
                                             +"* Each level carries 10 points\n"
                                             ,"Instructions"
                                             ,JOptionPane.INFORMATION_MESSAGE                                    
